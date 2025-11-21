@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
+    [OptimisticLocking(true)]
     public class Customer : XPLiteObject
     {
-
         public Customer(Session session) : base(session)
         {
-
+            session.LockingOption = LockingOption.Optimistic;
         }
 
         int _code;

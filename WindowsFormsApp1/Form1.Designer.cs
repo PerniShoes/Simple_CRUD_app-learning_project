@@ -28,43 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DevExpress.XtraCharts.DoughnutSeriesView doughnutSeriesView1 = new DevExpress.XtraCharts.DoughnutSeriesView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.CodeField = new DevExpress.XtraEditors.TextEdit();
+            this.CompanyNameField = new DevExpress.XtraEditors.TextEdit();
+            this.CountryField = new DevExpress.XtraEditors.TextEdit();
+            this.AddressField = new DevExpress.XtraEditors.TextEdit();
+            this.ContactNumberField = new DevExpress.XtraEditors.TextEdit();
+            this.LastOrderDateField = new DevExpress.XtraEditors.DateEdit();
+            this.DeleteButton = new DevExpress.XtraEditors.SimpleButton();
+            this.SaveButton = new DevExpress.XtraEditors.SimpleButton();
+            this.UpdateButton = new DevExpress.XtraEditors.SimpleButton();
+            this.ClearButton = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.CountryChart = new DevExpress.XtraCharts.ChartControl();
+            this.RefreshChartButton = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodeField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountryField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddressField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactNumberField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountryChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView1)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(27, 337);
+            this.gridControl1.Location = new System.Drawing.Point(31, 405);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1309, 379);
+            this.gridControl1.Size = new System.Drawing.Size(1498, 507);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -83,6 +97,9 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsSelection.CheckBoxSelectorColumnWidth = 40;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top;
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -94,7 +111,7 @@
             this.gridColumn2.MinWidth = 30;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 201;
             // 
             // gridColumn3
@@ -104,8 +121,18 @@
             this.gridColumn3.MinWidth = 30;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.VisibleIndex = 6;
             this.gridColumn3.Width = 121;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "ContactNumber";
+            this.gridColumn6.FieldName = "ContactNumber";
+            this.gridColumn6.MinWidth = 30;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 3;
+            this.gridColumn6.Width = 133;
             // 
             // gridColumn4
             // 
@@ -114,7 +141,7 @@
             this.gridColumn4.MinWidth = 30;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 168;
             // 
             // gridColumn5
@@ -124,7 +151,7 @@
             this.gridColumn5.MinWidth = 30;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 127;
             // 
             // gridColumn1
@@ -134,18 +161,8 @@
             this.gridColumn1.MinWidth = 30;
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             this.gridColumn1.Width = 112;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "ContactNumber";
-            this.gridColumn6.FieldName = "ContactNumber";
-            this.gridColumn6.MinWidth = 30;
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 133;
             // 
             // labelControl1
             // 
@@ -189,73 +206,186 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(965, 40);
+            this.labelControl6.Location = new System.Drawing.Point(65, 245);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(107, 19);
             this.labelControl6.TabIndex = 7;
             this.labelControl6.Text = "LastOrderDate:";
             // 
-            // textEdit1
+            // CodeField
             // 
-            this.textEdit1.Location = new System.Drawing.Point(178, 37);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(131, 26);
-            this.textEdit1.TabIndex = 8;
+            this.CodeField.Location = new System.Drawing.Point(178, 37);
+            this.CodeField.Name = "CodeField";
+            this.CodeField.Size = new System.Drawing.Size(131, 26);
+            this.CodeField.TabIndex = 8;
             // 
-            // textEdit2
+            // CompanyNameField
             // 
-            this.textEdit2.Location = new System.Drawing.Point(178, 79);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(397, 26);
-            this.textEdit2.TabIndex = 9;
+            this.CompanyNameField.Location = new System.Drawing.Point(178, 79);
+            this.CompanyNameField.Name = "CompanyNameField";
+            this.CompanyNameField.Size = new System.Drawing.Size(397, 26);
+            this.CompanyNameField.TabIndex = 9;
             // 
-            // textEdit3
+            // CountryField
             // 
-            this.textEdit3.Location = new System.Drawing.Point(178, 164);
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Size = new System.Drawing.Size(150, 26);
-            this.textEdit3.TabIndex = 10;
+            this.CountryField.Location = new System.Drawing.Point(178, 164);
+            this.CountryField.Name = "CountryField";
+            this.CountryField.Size = new System.Drawing.Size(150, 26);
+            this.CountryField.TabIndex = 10;
             // 
-            // textEdit4
+            // AddressField
             // 
-            this.textEdit4.Location = new System.Drawing.Point(178, 202);
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Size = new System.Drawing.Size(237, 26);
-            this.textEdit4.TabIndex = 11;
+            this.AddressField.Location = new System.Drawing.Point(178, 202);
+            this.AddressField.Name = "AddressField";
+            this.AddressField.Size = new System.Drawing.Size(237, 26);
+            this.AddressField.TabIndex = 11;
             // 
-            // textEdit5
+            // ContactNumberField
             // 
-            this.textEdit5.Location = new System.Drawing.Point(178, 121);
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
-            this.textEdit5.Properties.MaskSettings.Set("mask", "000-000-000");
-            this.textEdit5.Properties.UseMaskAsDisplayFormat = true;
-            this.textEdit5.Size = new System.Drawing.Size(131, 26);
-            this.textEdit5.TabIndex = 12;
+            this.ContactNumberField.Location = new System.Drawing.Point(178, 121);
+            this.ContactNumberField.Name = "ContactNumberField";
+            this.ContactNumberField.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
+            this.ContactNumberField.Properties.MaskSettings.Set("mask", "000-000-000");
+            this.ContactNumberField.Properties.UseMaskAsDisplayFormat = true;
+            this.ContactNumberField.Size = new System.Drawing.Size(131, 26);
+            this.ContactNumberField.TabIndex = 12;
             // 
-            // dateEdit1
+            // LastOrderDateField
             // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(1078, 37);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.LastOrderDateField.EditValue = null;
+            this.LastOrderDateField.Location = new System.Drawing.Point(178, 242);
+            this.LastOrderDateField.Name = "LastOrderDateField";
+            this.LastOrderDateField.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.LastOrderDateField.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(184, 26);
-            this.dateEdit1.TabIndex = 14;
+            this.LastOrderDateField.Size = new System.Drawing.Size(184, 26);
+            this.LastOrderDateField.TabIndex = 14;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.ImageOptions.Image")));
+            this.DeleteButton.Location = new System.Drawing.Point(651, 346);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.DeleteButton.Size = new System.Drawing.Size(115, 34);
+            this.DeleteButton.TabIndex = 15;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.ImageOptions.Image")));
+            this.SaveButton.Location = new System.Drawing.Point(46, 346);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SaveButton.Size = new System.Drawing.Size(115, 34);
+            this.SaveButton.TabIndex = 16;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // UpdateButton
+            // 
+            this.UpdateButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("UpdateButton.ImageOptions.Image")));
+            this.UpdateButton.Location = new System.Drawing.Point(530, 346);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.UpdateButton.Size = new System.Drawing.Size(115, 34);
+            this.UpdateButton.TabIndex = 17;
+            this.UpdateButton.Text = "Update";
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ClearButton.ImageOptions.Image")));
+            this.ClearButton.Location = new System.Drawing.Point(167, 346);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ClearButton.Size = new System.Drawing.Size(115, 34);
+            this.ClearButton.TabIndex = 18;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(0, 0);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(0, 19);
+            this.labelControl7.TabIndex = 0;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(610, 321);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(84, 19);
+            this.labelControl8.TabIndex = 19;
+            this.labelControl8.Text = "Modify Data";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(110, 321);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(102, 19);
+            this.labelControl9.TabIndex = 20;
+            this.labelControl9.Text = "Add New Data";
+            // 
+            // CountryChart
+            // 
+            this.CountryChart.Location = new System.Drawing.Point(878, 17);
+            this.CountryChart.Name = "CountryChart";
+            this.CountryChart.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
+            this.CountryChart.SeriesTemplate.View = doughnutSeriesView1;
+            this.CountryChart.Size = new System.Drawing.Size(610, 363);
+            this.CountryChart.TabIndex = 21;
+            this.CountryChart.Click += new System.EventHandler(this.CountryChart_Click);
+            // 
+            // RefreshChartButton
+            // 
+            this.RefreshChartButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefreshChartButton.ImageOptions.Image")));
+            this.RefreshChartButton.Location = new System.Drawing.Point(690, 17);
+            this.RefreshChartButton.Name = "RefreshChartButton";
+            this.RefreshChartButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RefreshChartButton.Size = new System.Drawing.Size(182, 34);
+            this.RefreshChartButton.TabIndex = 22;
+            this.RefreshChartButton.Text = "Debug Refresh Chart";
+            this.RefreshChartButton.Visible = false;
+            this.RefreshChartButton.Click += new System.EventHandler(this.RefreshChartButton_Click);
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.BackColor = System.Drawing.Color.White;
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Sans Serif Collection", 7.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.Options.UseBackColor = true;
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl10.Location = new System.Drawing.Point(891, 32);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.ShowLineShadow = false;
+            this.labelControl10.Size = new System.Drawing.Size(105, 31);
+            this.labelControl10.TabIndex = 23;
+            this.labelControl10.Text = "Customers:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 728);
-            this.Controls.Add(this.dateEdit1);
-            this.Controls.Add(this.textEdit5);
-            this.Controls.Add(this.textEdit4);
-            this.Controls.Add(this.textEdit3);
-            this.Controls.Add(this.textEdit2);
-            this.Controls.Add(this.textEdit1);
+            this.ClientSize = new System.Drawing.Size(1578, 944);
+            this.Controls.Add(this.labelControl10);
+            this.Controls.Add(this.RefreshChartButton);
+            this.Controls.Add(this.CountryChart);
+            this.Controls.Add(this.labelControl9);
+            this.Controls.Add(this.labelControl8);
+            this.Controls.Add(this.labelControl7);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.UpdateButton);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.LastOrderDateField);
+            this.Controls.Add(this.ContactNumberField);
+            this.Controls.Add(this.AddressField);
+            this.Controls.Add(this.CountryField);
+            this.Controls.Add(this.CompanyNameField);
+            this.Controls.Add(this.CodeField);
             this.Controls.Add(this.labelControl6);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
@@ -269,13 +399,15 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CodeField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyNameField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountryField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddressField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactNumberField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CountryChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,18 +423,28 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
+        private DevExpress.XtraEditors.TextEdit CodeField;
+        private DevExpress.XtraEditors.TextEdit CompanyNameField;
+        private DevExpress.XtraEditors.TextEdit CountryField;
+        private DevExpress.XtraEditors.TextEdit AddressField;
+        private DevExpress.XtraEditors.TextEdit ContactNumberField;
+        private DevExpress.XtraEditors.DateEdit LastOrderDateField;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.SimpleButton DeleteButton;
+        private DevExpress.XtraEditors.SimpleButton SaveButton;
+        private DevExpress.XtraEditors.SimpleButton UpdateButton;
+        private DevExpress.XtraEditors.SimpleButton ClearButton;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraCharts.ChartControl CountryChart;
+        private DevExpress.XtraEditors.SimpleButton RefreshChartButton;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }
 
