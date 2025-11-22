@@ -84,6 +84,7 @@
             this.PasswordField.Name = "PasswordField";
             this.PasswordField.Size = new System.Drawing.Size(499, 35);
             this.PasswordField.TabIndex = 4;
+            this.PasswordField.UseSystemPasswordChar = true;
             // 
             // LoginLabel
             // 
@@ -120,6 +121,7 @@
             this.LoginButton.Size = new System.Drawing.Size(271, 35);
             this.LoginButton.TabIndex = 7;
             this.LoginButton.Text = "Login";
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // LoginForm
             // 

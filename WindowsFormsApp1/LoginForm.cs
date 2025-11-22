@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
+using DevExpress.XtraEditors;
+using DevExpress.XtraWaitForm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +18,7 @@ namespace WindowsFormsApp1
 {
     public partial class LoginForm : Form
     {
-        // Controls size of field input:
+        // Controls size of field inputs:
         float fieldsFontDivisor = 30f;
         // These control the position of labels and fields:
         float loginFieldWidthMultiplier = 0.5f;     // 0.5f = 50% 
@@ -26,8 +29,19 @@ namespace WindowsFormsApp1
         public LoginForm()
         {
             InitializeComponent();
+            // Avoids flicker on first (or future) redraw
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint, true);
+            this.UpdateStyles();
+            //
             LoginButton.Paint += LoginButtonPaint;
             ResizePanels();
+            this.AcceptButton = LoginButton;
+
+            // CreateUser("Admin", "12345");
+            // CreateUser("Marek", "hasło");
+            // CreateUser("Guest", "123");
 
         }
         protected override void OnResize(EventArgs e)
@@ -84,7 +98,7 @@ namespace WindowsFormsApp1
         {
             LoginButton.Width = (int)(width * 0.35);
             LoginButton.Height = (int)(height * 0.05);
-            LoginButton.Font = new Font(LoginButton.Font.FontFamily, height / 40, LoginButton.Font.Style);
+            LoginButton.Font = new Font(LoginButton.Font.FontFamily, Math.Max(height / 40,1), LoginButton.Font.Style);
 
             LoginButton.Left = (int)(width * passwordFieldWidthMultiplier - LoginButton.Width / 2f);
             LoginButton.Top = (int)((height - LoginButton.Height) * (passwordFieldHeightMultiplier + 0.16f));
@@ -94,11 +108,11 @@ namespace WindowsFormsApp1
             float fontSizeDivisor = 35;
             float horizonatlOffset = 4f;
 
-            LoginLabel.Font = new Font(LoginLabel.Font.FontFamily, height / fontSizeDivisor, LoginLabel.Font.Style);
+            LoginLabel.Font = new Font(LoginLabel.Font.FontFamily, Math.Max(height / fontSizeDivisor,1), LoginLabel.Font.Style);
             LoginLabel.Left = (int)(width * loginFieldWidthMultiplier - LoginField.Width / 2f+ horizonatlOffset);
             LoginLabel.Top = (int)((height - LoginLabel.Height) * (loginFieldHeightMultiplier-0.06f));
 
-            PasswordLabel.Font = new Font(PasswordLabel.Font.FontFamily, height / fontSizeDivisor, PasswordLabel.Font.Style);
+            PasswordLabel.Font = new Font(PasswordLabel.Font.FontFamily, Math.Max(height / fontSizeDivisor,1), PasswordLabel.Font.Style);
             PasswordLabel.Left = (int)(width * passwordFieldWidthMultiplier - PasswordField.Width / 2f+ horizonatlOffset);
             PasswordLabel.Top = (int)((height - PasswordLabel.Height) * (passwordFieldHeightMultiplier-0.06f));
 
@@ -108,7 +122,7 @@ namespace WindowsFormsApp1
         {
             LoginField.Width = (int)(width * 0.4);
             // Font size controls height 
-            LoginField.Font = new Font(LoginField.Font.FontFamily, height/ fieldsFontDivisor, LoginField.Font.Style);
+            LoginField.Font = new Font(LoginField.Font.FontFamily, Math.Max(height / fieldsFontDivisor,1), LoginField.Font.Style);
             LoginField.Left = (int)(width * loginFieldWidthMultiplier - LoginField.Width / 2f);
             LoginField.Top = (int)((height - LoginField.Height) * loginFieldHeightMultiplier);
 
@@ -117,12 +131,10 @@ namespace WindowsFormsApp1
         {
             PasswordField.Width = (int)(width * 0.4);
             // Font size controls height 
-            PasswordField.Font = new Font(PasswordField.Font.FontFamily, height / fieldsFontDivisor, PasswordField.Font.Style);
+            PasswordField.Font = new Font(PasswordField.Font.FontFamily, Math.Max(height / fieldsFontDivisor,1), PasswordField.Font.Style);
             PasswordField.Left = (int)(width * passwordFieldWidthMultiplier - PasswordField.Width / 2f);
             PasswordField.Top = (int)((height - PasswordField.Height) * passwordFieldHeightMultiplier);
         }
-
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -151,5 +163,56 @@ namespace WindowsFormsApp1
         {
 
         }
-    }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            string username = LoginField.Text.Trim();
+            string password = PasswordField.Text;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                XtraMessageBox.Show("Please enter both username and password.");
+                return;
+            }
+
+            using (Session session = new Session())
+            {
+                User user = session.FindObject<User>(
+                    CriteriaOperator.Parse("Username = ?", username));
+
+                if (user != null && user.CheckPassword(password))
+                {
+                    XtraMessageBox.Show($"Welcome, {user.Username}!");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    XtraMessageBox.Show("Invalid username or password.");
+                }
+            }
+        }
+
+    public void CreateUser(string username, string password)
+        {
+            using (Session session = new Session())
+            {
+                User existing = session.FindObject<User>(
+                    CriteriaOperator.Parse("Username = ?", username));
+
+                if (existing != null)
+                    throw new Exception("User already exists.");
+
+                User newUser = new User(session)
+                {
+                    Username = username
+                };
+                newUser.SetPassword(password);
+                newUser.Save();
+            }
+        }
+
+
+}
 }

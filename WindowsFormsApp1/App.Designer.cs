@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class App
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
             DevExpress.XtraCharts.DoughnutSeriesView doughnutSeriesView1 = new DevExpress.XtraCharts.DoughnutSeriesView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -88,182 +88,6 @@
             // 
             // gridView1
             // 
-            this.gridView1.Appearance.ColumnFilterButton.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ColumnFilterButton.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.gridView1.Appearance.ColumnFilterButton.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseBackColor = true;
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseBorderColor = true;
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseForeColor = true;
-            this.gridView1.Appearance.ColumnFilterButtonActive.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ColumnFilterButtonActive.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ColumnFilterButtonActive.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBackColor = true;
-            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseBorderColor = true;
-            this.gridView1.Appearance.ColumnFilterButtonActive.Options.UseForeColor = true;
-            this.gridView1.Appearance.CustomizationFormHint.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.CustomizationFormHint.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.CustomizationFormHint.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.CustomizationFormHint.Options.UseBackColor = true;
-            this.gridView1.Appearance.CustomizationFormHint.Options.UseBorderColor = true;
-            this.gridView1.Appearance.CustomizationFormHint.Options.UseForeColor = true;
-            this.gridView1.Appearance.DetailTip.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.DetailTip.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.DetailTip.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.DetailTip.Options.UseBackColor = true;
-            this.gridView1.Appearance.DetailTip.Options.UseBorderColor = true;
-            this.gridView1.Appearance.DetailTip.Options.UseForeColor = true;
-            this.gridView1.Appearance.Empty.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Empty.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Empty.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.Empty.Options.UseBackColor = true;
-            this.gridView1.Appearance.Empty.Options.UseBorderColor = true;
-            this.gridView1.Appearance.Empty.Options.UseForeColor = true;
-            this.gridView1.Appearance.EvenRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.EvenRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.EvenRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.EvenRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.EvenRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.FilterCloseButton.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FilterCloseButton.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FilterCloseButton.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FilterCloseButton.Options.UseBackColor = true;
-            this.gridView1.Appearance.FilterCloseButton.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FilterCloseButton.Options.UseForeColor = true;
-            this.gridView1.Appearance.FilterPanel.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FilterPanel.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FilterPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FilterPanel.Options.UseBackColor = true;
-            this.gridView1.Appearance.FilterPanel.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FilterPanel.Options.UseForeColor = true;
-            this.gridView1.Appearance.FixedLine.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FixedLine.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FixedLine.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FixedLine.Options.UseBackColor = true;
-            this.gridView1.Appearance.FixedLine.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FixedLine.Options.UseForeColor = true;
-            this.gridView1.Appearance.FocusedCell.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FocusedCell.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gridView1.Appearance.FocusedCell.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FocusedCell.Options.UseForeColor = true;
-            this.gridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FocusedRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.FocusedRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.FooterPanel.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FooterPanel.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.FooterPanel.Options.UseBackColor = true;
-            this.gridView1.Appearance.FooterPanel.Options.UseBorderColor = true;
-            this.gridView1.Appearance.FooterPanel.Options.UseForeColor = true;
-            this.gridView1.Appearance.GroupButton.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupButton.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupButton.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.GroupButton.Options.UseBackColor = true;
-            this.gridView1.Appearance.GroupButton.Options.UseBorderColor = true;
-            this.gridView1.Appearance.GroupButton.Options.UseForeColor = true;
-            this.gridView1.Appearance.GroupFooter.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupFooter.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupFooter.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.GroupFooter.Options.UseBackColor = true;
-            this.gridView1.Appearance.GroupFooter.Options.UseBorderColor = true;
-            this.gridView1.Appearance.GroupFooter.Options.UseForeColor = true;
-            this.gridView1.Appearance.GroupPanel.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupPanel.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupPanel.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupPanel.Options.UseBackColor = true;
-            this.gridView1.Appearance.GroupPanel.Options.UseBorderColor = true;
-            this.gridView1.Appearance.GroupPanel.Options.UseForeColor = true;
-            this.gridView1.Appearance.GroupRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.GroupRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.GroupRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.GroupRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.HeaderPanel.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HeaderPanel.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HeaderPanel.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.HeaderPanel.Options.UseBackColor = true;
-            this.gridView1.Appearance.HeaderPanel.Options.UseBorderColor = true;
-            this.gridView1.Appearance.HeaderPanel.Options.UseForeColor = true;
-            this.gridView1.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HideSelectionRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HideSelectionRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.HideSelectionRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.HideSelectionRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.HideSelectionRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.HorzLine.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HorzLine.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HorzLine.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.HorzLine.Options.UseBackColor = true;
-            this.gridView1.Appearance.HorzLine.Options.UseBorderColor = true;
-            this.gridView1.Appearance.HorzLine.Options.UseForeColor = true;
-            this.gridView1.Appearance.HotTrackedRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HotTrackedRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.HotTrackedRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.HotTrackedRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.HotTrackedRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.HotTrackedRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.NoSearchResults.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.NoSearchResults.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.NoSearchResults.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.NoSearchResults.Options.UseBackColor = true;
-            this.gridView1.Appearance.NoSearchResults.Options.UseBorderColor = true;
-            this.gridView1.Appearance.NoSearchResults.Options.UseForeColor = true;
-            this.gridView1.Appearance.OddRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.OddRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.OddRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.OddRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.OddRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.OddRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.Preview.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Preview.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Preview.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.Preview.Options.UseBackColor = true;
-            this.gridView1.Appearance.Preview.Options.UseBorderColor = true;
-            this.gridView1.Appearance.Preview.Options.UseForeColor = true;
-            this.gridView1.Appearance.Row.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Row.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.Row.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.Row.Options.UseBackColor = true;
-            this.gridView1.Appearance.Row.Options.UseBorderColor = true;
-            this.gridView1.Appearance.Row.Options.UseForeColor = true;
-            this.gridView1.Appearance.RowSeparator.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.RowSeparator.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.RowSeparator.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.RowSeparator.Options.UseBackColor = true;
-            this.gridView1.Appearance.RowSeparator.Options.UseBorderColor = true;
-            this.gridView1.Appearance.RowSeparator.Options.UseForeColor = true;
-            this.gridView1.Appearance.SelectedRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.SelectedRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.SelectedRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.SelectedRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.TopNewRow.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.TopNewRow.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.TopNewRow.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.TopNewRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.TopNewRow.Options.UseBorderColor = true;
-            this.gridView1.Appearance.TopNewRow.Options.UseForeColor = true;
-            this.gridView1.Appearance.VertLine.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.VertLine.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.VertLine.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.VertLine.Options.UseBackColor = true;
-            this.gridView1.Appearance.VertLine.Options.UseBorderColor = true;
-            this.gridView1.Appearance.VertLine.Options.UseForeColor = true;
-            this.gridView1.Appearance.ViewCaption.BackColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ViewCaption.BorderColor = System.Drawing.Color.LavenderBlush;
-            this.gridView1.Appearance.ViewCaption.ForeColor = System.Drawing.Color.Black;
-            this.gridView1.Appearance.ViewCaption.Options.UseBackColor = true;
-            this.gridView1.Appearance.ViewCaption.Options.UseBorderColor = true;
-            this.gridView1.Appearance.ViewCaption.Options.UseForeColor = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn2,
             this.gridColumn3,
@@ -283,6 +107,10 @@
             // 
             // gridColumn2
             // 
+            this.gridColumn2.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.gridColumn2.AppearanceCell.Options.UseFont = true;
+            this.gridColumn2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn2.AppearanceHeader.Options.UseFont = true;
             this.gridColumn2.Caption = "CompanyName";
             this.gridColumn2.FieldName = "CompanyName";
             this.gridColumn2.MinWidth = 30;
@@ -293,6 +121,8 @@
             // 
             // gridColumn3
             // 
+            this.gridColumn3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn3.AppearanceHeader.Options.UseFont = true;
             this.gridColumn3.Caption = "LastOrderDate";
             this.gridColumn3.FieldName = "LastOrderDate";
             this.gridColumn3.MinWidth = 30;
@@ -303,6 +133,8 @@
             // 
             // gridColumn6
             // 
+            this.gridColumn6.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn6.AppearanceHeader.Options.UseFont = true;
             this.gridColumn6.Caption = "ContactNumber";
             this.gridColumn6.FieldName = "ContactNumber";
             this.gridColumn6.MinWidth = 30;
@@ -313,6 +145,8 @@
             // 
             // gridColumn4
             // 
+            this.gridColumn4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn4.AppearanceHeader.Options.UseFont = true;
             this.gridColumn4.Caption = "Address";
             this.gridColumn4.FieldName = "Address";
             this.gridColumn4.MinWidth = 30;
@@ -323,6 +157,8 @@
             // 
             // gridColumn5
             // 
+            this.gridColumn5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn5.AppearanceHeader.Options.UseFont = true;
             this.gridColumn5.Caption = "Country";
             this.gridColumn5.FieldName = "Country";
             this.gridColumn5.MinWidth = 30;
@@ -333,6 +169,8 @@
             // 
             // gridColumn1
             // 
+            this.gridColumn1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+            this.gridColumn1.AppearanceHeader.Options.UseFont = true;
             this.gridColumn1.Caption = "Code";
             this.gridColumn1.FieldName = "Code";
             this.gridColumn1.MinWidth = 30;
@@ -561,7 +399,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PerniCRUD";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.App_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CodeField.Properties)).EndInit();

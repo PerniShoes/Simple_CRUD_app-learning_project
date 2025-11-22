@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevExpress.Xpo;
+using DevExpress.Xpo.DB;
+using DevExpress.XtraWaitForm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,19 +20,27 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //using (var login = new LoginForm())
-            {
-               // if (login.ShowDialog() == DialogResult.OK)
-                {
-                    // Application.Run(new LoginForm());
-                     Application.Run(new Form1());
-                }
-                //else
-                {
-                    // Login failed, do something
+            string connectionString = MSSqlConnectionProvider.GetConnectionString("Perniptop", "CRUDAppServer");
+            XpoDefault.DataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.DatabaseAndSchema);
 
+            bool loggedIn = false;
+            while (!loggedIn)
+            {
+                using (var login = new LoginForm())
+                {
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        loggedIn = true;
+                    }
+                    else
+                    {
+                        return; 
+                    }
                 }
             }
+
+            Application.Run(new App());
+
         }
     }
 }

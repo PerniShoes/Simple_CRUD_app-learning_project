@@ -18,11 +18,18 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class App : Form
     {
-        public Form1()
+        public App()
         {
             InitializeComponent();
+            // Avoids flicker on first (or future) redraw
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
+              ControlStyles.AllPaintingInWmPaint |
+              ControlStyles.UserPaint, true);
+            this.UpdateStyles();
+            //
+
             int w = this.ClientSize.Width;
             int h = this.ClientSize.Height;
             gridView1.FocusedRowChanged += GridView1_FocusedRowChanged;
@@ -30,6 +37,22 @@ namespace WindowsFormsApp1
             ResizeGrid(w,h);
             ResizeChart(w, h);
         }
+
+        private XPCollection xpCollection;
+        private void App_Load(object sender, EventArgs e)
+        {
+            LoadData();
+            RefreshCountryChart();
+            ClearFields();
+        }
+        public void LoadData()
+        {
+            xpCollection = new XPCollection(typeof(Customer));
+            gridControl1.DataSource = xpCollection;
+        }
+
+
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -83,22 +106,6 @@ namespace WindowsFormsApp1
                 LastOrderDateField.EditValue = customer.LastOrderDate;
             }
 
-        }
-
-        private XPCollection xpCollection;
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            string connectionString = MSSqlConnectionProvider.GetConnectionString("Perniptop", "CRUDAppServer");
-            XpoDefault.DataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.DatabaseAndSchema);
-            LoadData();
-            RefreshCountryChart();
-            ClearFields();
-        }
-
-        public void LoadData()
-        {
-            xpCollection = new XPCollection(typeof(Customer));
-            gridControl1.DataSource = xpCollection;   
         }
 
         private void gridControl1_Click(object sender, EventArgs e)
