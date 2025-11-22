@@ -2,12 +2,14 @@
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using DevExpress.XtraCharts;
+using DevExpress.XtraCharts.Native;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -21,8 +23,53 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            int w = this.ClientSize.Width;
+            int h = this.ClientSize.Height;
             gridView1.FocusedRowChanged += GridView1_FocusedRowChanged;
+
+            ResizeGrid(w,h);
+            ResizeChart(w, h);
         }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            this.Invalidate();  // Forces repaint
+            int w = this.ClientSize.Width;
+            int h = this.ClientSize.Height;
+            ResizeGrid(w, h);
+            ResizeChart(w, h);
+        }
+
+        private void ResizeChart(int width, int height)
+        {
+            CountryChart.Height = (int)(height * 0.40f);
+            CountryChart.Width = (int)(width * 0.40f);
+            CountryChart.Left = (int)(width *0.55f);
+
+        }
+        private void ResizeGrid(int width, int height)
+        {
+            gridControl1.Height = (int)(height * 0.5f);
+            gridControl1.Top = (int)((height - gridControl1.Height) - 20f);
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Rectangle rect = this.ClientRectangle;
+            if (rect.Width > 0 && rect.Height > 0)
+            {
+                using (System.Drawing.Drawing2D.LinearGradientBrush brush =
+                    new System.Drawing.Drawing2D.LinearGradientBrush(
+                        rect,
+                        Color.FromArgb(140, 241, 146, 189),   // Top color 
+                        Color.FromArgb(140, 53, 68, 120),     // Bottom color
+                        System.Drawing.Drawing2D.LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+            }
+        }
+
         private void GridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             var customer = gridView1.GetFocusedRow() as Customer;
@@ -45,6 +92,7 @@ namespace WindowsFormsApp1
             XpoDefault.DataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.DatabaseAndSchema);
             LoadData();
             RefreshCountryChart();
+            ClearFields();
         }
 
         public void LoadData()
@@ -64,7 +112,7 @@ namespace WindowsFormsApp1
                 , MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 , DevExpress.Utils.DefaultBoolean.True);
 
-            if(promptWindow == DialogResult.Yes)
+            if (promptWindow == DialogResult.Yes)
             {
                 using (var uow = new UnitOfWork())
                 {
@@ -79,10 +127,7 @@ namespace WindowsFormsApp1
                     xpCollection.Reload();
 
                 }
-
             }
-
-
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -165,6 +210,11 @@ namespace WindowsFormsApp1
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            ClearFields();
+        }
+
+        private void ClearFields()
+        {
             CodeField.EditValue = "10000";
             CompanyNameField.Text = "";
             ContactNumberField.Text = "";
@@ -172,7 +222,6 @@ namespace WindowsFormsApp1
             AddressField.Text = "";
             LastOrderDateField.EditValue = "";
             CodeField.Focus();
-
         }
 
         private void CountryChart_Click(object sender, EventArgs e)
