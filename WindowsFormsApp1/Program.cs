@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             bool isMyPC = Environment.MachineName.Equals("Perniptop", StringComparison.OrdinalIgnoreCase);
 
-            //isMyPC = false;
+            isMyPC = false;
             if (isMyPC)
             {
                 // Setup with SSMS using localhost

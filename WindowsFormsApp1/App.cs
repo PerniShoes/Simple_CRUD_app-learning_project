@@ -159,14 +159,27 @@ namespace WindowsFormsApp1
         private void SaveButton_Click(object sender, EventArgs e)
         {
 
-            var customer = new Customer(uow);
-
             int codeTemp = int.Parse(CodeField.EditValue.ToString());
+            var exists = uow.Query<Customer>().Any(x => x.Code == codeTemp);
+
+            if (exists)
+            {
+                XtraMessageBox.Show($"There is already a customer with id: {codeTemp}", "Input error");
+                CodeField.Focus();
+                return;
+            }
+
+            var customer = new Customer(uow);
             customer.Code = codeTemp;
             customer.CompanyName = CompanyNameField.Text;
             customer.ContactNumber = ContactNumberField.Text;
             customer.Country = CountryField.Text;
             customer.Address = AddressField.Text;
+
+            if(customer.Country == "")
+            {
+                customer.Country = "Unknown";
+            }
             if (LastOrderDateField.EditValue != null)
             {
                 customer.LastOrderDate = DateTime.Parse(LastOrderDateField.EditValue.ToString());
@@ -175,20 +188,11 @@ namespace WindowsFormsApp1
             {
                 customer.LastOrderDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
             }
-                var exists = uow.Query<Customer>().Any(x => x.Code == codeTemp);
-
-            if (exists)
-            {
-                XtraMessageBox.Show($"There is already a customer with id: {customer.Code}", "Input error");
-                CodeField.Focus();
-                return;
-            }
-
             uow.CommitChanges();
             xpCollection.Reload();
-            XtraMessageBox.Show("Saved!", "Succes");
+            XtraMessageBox.Show("Saved!", "Success");
             RefreshCountryChart();
-        
+
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
