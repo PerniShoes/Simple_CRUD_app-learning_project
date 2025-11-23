@@ -128,11 +128,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void gridControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             var promptWindow = XtraMessageBox.Show("<b><color=red>Delete</color></b> selected data?", "Message"
@@ -248,12 +243,6 @@ namespace WindowsFormsApp1
             LastOrderDateField.EditValue = DateTime.Today;
             CodeField.Focus();
         }
-
-        private void CountryChart_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void RefreshCountryChart()
         {
             var allCustomers = uow.Query<Customer>().ToList();

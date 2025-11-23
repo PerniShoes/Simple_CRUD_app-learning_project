@@ -85,7 +85,6 @@
             this.gridControl1.UseEmbeddedNavigator = true;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -356,7 +355,6 @@
             this.CountryChart.SeriesTemplate.View = doughnutSeriesView2;
             this.CountryChart.Size = new System.Drawing.Size(610, 363);
             this.CountryChart.TabIndex = 21;
-            this.CountryChart.Click += new System.EventHandler(this.CountryChart_Click);
             // 
             // RefreshChartButton
             // 

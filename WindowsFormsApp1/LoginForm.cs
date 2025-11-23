@@ -37,13 +37,13 @@ namespace WindowsFormsApp1
             //
 
             InitializeDefaultUsers();
-            LoginButton.Paint += LoginButtonPaint;
-            ResizePanels();
-            this.AcceptButton = LoginButton;
-
             // CreateUser("Admin", "12345");
             // CreateUser("Marek", "hasło");
             // CreateUser("Guest", "123");
+
+            LoginButton.Paint += LoginButtonPaint;
+            ResizePanels();
+            this.AcceptButton = LoginButton;
 
         }
         protected override void OnResize(EventArgs e)
@@ -155,17 +155,6 @@ namespace WindowsFormsApp1
                 }
             }
         }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
             App.CurrentUser = null;
