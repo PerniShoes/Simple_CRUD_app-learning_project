@@ -1,5 +1,4 @@
 ### Basic CRUD app
-#
 Simple app using DevExpress, XPO, C#  
 Connected with SSMS localhost server (or defaultDatabase)
 #
