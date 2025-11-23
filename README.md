@@ -3,6 +3,12 @@
 Simple app using DevExpress, XPO, C#  
 Connected with SSMS localhost server (or defaultDatabase)
 #
+In case dependencies don't work, I've added a folder with those needed for x64 platform. 
+Should Visual Studio have issues with NuGet, it should be enough to copy the x64 folder inside bin.  
+
+In case it doesn't work regardless, there's a showcase video ;D:  
+
+#  
 Current state:  
 App:  
 <img width="900" height="400" alt="AppScreen" src="https://github.com/user-attachments/assets/5d325d96-1c8d-4502-b001-f5dd600184a0" />  
