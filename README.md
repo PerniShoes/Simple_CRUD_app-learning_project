@@ -6,7 +6,7 @@ In case dependencies don't work, I've added a folder with those needed for x64 p
 Should Visual Studio have issues with NuGet, it should be enough to copy the x64 folder inside bin.  
 
 In case it doesn't work regardless, there's a showcase video ;D:  
-
+https://youtu.be/IVAs2r9FvUo  
 #  
 Current state:  
 App:  
