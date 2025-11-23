@@ -37,9 +37,6 @@ namespace WindowsFormsApp1
             //
 
             InitializeDefaultUsers();
-            // CreateUser("Admin", "12345");
-            // CreateUser("Marek", "hasło");
-            // CreateUser("Guest", "123");
 
             LoginButton.Paint += LoginButtonPaint;
             ResizePanels();

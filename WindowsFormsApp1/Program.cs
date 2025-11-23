@@ -17,9 +17,10 @@ namespace WindowsFormsApp1
             SQLitePCL.Batteries_V2.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Not exactly clean since some other PC can also be named Perniptop xD
             bool isMyPC = Environment.MachineName.Equals("Perniptop", StringComparison.OrdinalIgnoreCase);
 
-            isMyPC = false;
+            //isMyPC = false;
             if (isMyPC)
             {
                 // Setup with SSMS using localhost
@@ -28,12 +29,17 @@ namespace WindowsFormsApp1
             }
             else
             {
-                // Automatic setup using SQLite
+                // Setup using SQLite
                 string conn = SQLiteConnectionProvider.GetConnectionString("defaultDatabase.db");
                 XpoDefault.DataLayer = XpoDefault.GetDataLayer(conn, AutoCreateOption.DatabaseAndSchema);
 
             }
             XpoDefault.Session = null;
+
+            // Login info:
+            // Admin    12345
+            // Marek    hasło
+            // Guest    123
 
             bool loggedIn = false;
             while (!loggedIn)
