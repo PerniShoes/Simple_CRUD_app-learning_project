@@ -7,6 +7,8 @@ Should Visual Studio have issues with NuGet, it should be enough to copy the x64
 
 In case it doesn't work regardless, there's a showcase video ;D:  
 https://youtu.be/IVAs2r9FvUo  
+<img width="300" height="100" alt="image" src="https://github.com/user-attachments/assets/78de7f7b-0308-4a44-a29d-fbd022b69854" />  
+
 #  
 Current state:  
 App:  
