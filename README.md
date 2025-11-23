@@ -1,6 +1,7 @@
 ### Basic CRUD app
 Simple app using DevExpress, XPO, C#  
 Connected with SSMS localhost server (or defaultDatabase)  
+  
 First time using those tools and frameworks or releasing an app working (hopefuly) on other devices,  
 also I am new to C#, so all in all, don't expect magic here haha
 #
