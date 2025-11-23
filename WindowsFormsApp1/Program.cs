@@ -11,17 +11,29 @@ namespace WindowsFormsApp1
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            SQLitePCL.Batteries_V2.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            bool isMyPC = Environment.MachineName.Equals("Perniptop", StringComparison.OrdinalIgnoreCase);
 
-            string connectionString = MSSqlConnectionProvider.GetConnectionString("Perniptop", "CRUDAppServer");
-            XpoDefault.DataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.DatabaseAndSchema);
+            //isMyPC = false;
+            if (isMyPC)
+            {
+                // Setup with SSMS using localhost
+                string connectionString = MSSqlConnectionProvider.GetConnectionString("Perniptop", "CRUDAppServer");
+                XpoDefault.DataLayer = XpoDefault.GetDataLayer(connectionString, AutoCreateOption.DatabaseAndSchema);
+            }
+            else
+            {
+                // Automatic setup using SQLite
+                string conn = SQLiteConnectionProvider.GetConnectionString("defaultDatabase.db");
+                XpoDefault.DataLayer = XpoDefault.GetDataLayer(conn, AutoCreateOption.DatabaseAndSchema);
+
+            }
+            XpoDefault.Session = null;
 
             bool loggedIn = false;
             while (!loggedIn)

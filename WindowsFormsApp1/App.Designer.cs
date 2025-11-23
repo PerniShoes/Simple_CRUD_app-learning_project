@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(App));
-            DevExpress.XtraCharts.DoughnutSeriesView doughnutSeriesView1 = new DevExpress.XtraCharts.DoughnutSeriesView();
+            DevExpress.XtraCharts.DoughnutSeriesView doughnutSeriesView2 = new DevExpress.XtraCharts.DoughnutSeriesView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -59,6 +59,7 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.CountryChart = new DevExpress.XtraCharts.ChartControl();
             this.RefreshChartButton = new DevExpress.XtraEditors.SimpleButton();
+            this.AdminLabel = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CodeField.Properties)).BeginInit();
@@ -69,7 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountryChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView2)).BeginInit();
             this.SuspendLayout();
             // 
             // gridControl1
@@ -352,7 +353,7 @@
             this.CountryChart.Location = new System.Drawing.Point(919, 17);
             this.CountryChart.Name = "CountryChart";
             this.CountryChart.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.CountryChart.SeriesTemplate.View = doughnutSeriesView1;
+            this.CountryChart.SeriesTemplate.View = doughnutSeriesView2;
             this.CountryChart.Size = new System.Drawing.Size(610, 363);
             this.CountryChart.TabIndex = 21;
             this.CountryChart.Click += new System.EventHandler(this.CountryChart_Click);
@@ -360,20 +361,30 @@
             // RefreshChartButton
             // 
             this.RefreshChartButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefreshChartButton.ImageOptions.Image")));
-            this.RefreshChartButton.Location = new System.Drawing.Point(690, 17);
+            this.RefreshChartButton.Location = new System.Drawing.Point(533, 12);
             this.RefreshChartButton.Name = "RefreshChartButton";
             this.RefreshChartButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.RefreshChartButton.Size = new System.Drawing.Size(182, 34);
+            this.RefreshChartButton.Size = new System.Drawing.Size(203, 34);
             this.RefreshChartButton.TabIndex = 22;
             this.RefreshChartButton.Text = "Debug Refresh Chart";
             this.RefreshChartButton.Visible = false;
             this.RefreshChartButton.Click += new System.EventHandler(this.RefreshChartButton_Click);
             // 
-            // Form1
+            // AdminLabel
+            // 
+            this.AdminLabel.Location = new System.Drawing.Point(12, 12);
+            this.AdminLabel.Name = "AdminLabel";
+            this.AdminLabel.Size = new System.Drawing.Size(96, 19);
+            this.AdminLabel.TabIndex = 23;
+            this.AdminLabel.Text = "Admin Perms";
+            this.AdminLabel.Visible = false;
+            // 
+            // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1578, 944);
+            this.Controls.Add(this.AdminLabel);
             this.Controls.Add(this.RefreshChartButton);
             this.Controls.Add(this.CountryChart);
             this.Controls.Add(this.labelControl9);
@@ -396,7 +407,7 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControl1);
-            this.Name = "Form1";
+            this.Name = "App";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PerniCRUD";
             this.Load += new System.EventHandler(this.App_Load);
@@ -409,7 +420,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContactNumberField.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LastOrderDateField.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(doughnutSeriesView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountryChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -447,6 +458,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraCharts.ChartControl CountryChart;
         private DevExpress.XtraEditors.SimpleButton RefreshChartButton;
+        private DevExpress.XtraEditors.LabelControl AdminLabel;
     }
 }
 

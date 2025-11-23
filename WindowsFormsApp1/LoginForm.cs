@@ -35,6 +35,8 @@ namespace WindowsFormsApp1
                 ControlStyles.UserPaint, true);
             this.UpdateStyles();
             //
+
+            InitializeDefaultUsers();
             LoginButton.Paint += LoginButtonPaint;
             ResizePanels();
             this.AcceptButton = LoginButton;
@@ -166,6 +168,7 @@ namespace WindowsFormsApp1
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            App.CurrentUser = null;
             string username = LoginField.Text.Trim();
             string password = PasswordField.Text;
 
@@ -182,8 +185,7 @@ namespace WindowsFormsApp1
 
                 if (user != null && user.CheckPassword(password))
                 {
-                    XtraMessageBox.Show($"Welcome, {user.Username}!");
-
+                    App.CurrentUser = user;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -194,7 +196,22 @@ namespace WindowsFormsApp1
             }
         }
 
-    public void CreateUser(string username, string password)
+        private void InitializeDefaultUsers()
+        {
+            using (UnitOfWork uow = new UnitOfWork())
+            {
+                bool hasUsers = uow.Query<User>().Any();
+                if (hasUsers)
+                    return; 
+
+                CreateUser("Admin", "12345");
+                CreateUser("Marek", "hasło");
+                CreateUser("Guest", "123");
+
+                uow.CommitChanges();
+            }
+        }
+        public void CreateUser(string username, string password)
         {
             using (Session session = new Session())
             {

@@ -20,9 +20,14 @@ namespace WindowsFormsApp1
 {
     public partial class App : Form
     {
+
+        private UnitOfWork uow;
+        private XPCollection<Customer> xpCollection;
+        public static User CurrentUser;
         public App()
         {
             InitializeComponent();
+            SetPermisions();
             // Avoids flicker on first (or future) redraw
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
               ControlStyles.AllPaintingInWmPaint |
@@ -38,7 +43,6 @@ namespace WindowsFormsApp1
             ResizeChart(w, h);
         }
 
-        private XPCollection xpCollection;
         private void App_Load(object sender, EventArgs e)
         {
             LoadData();
@@ -47,11 +51,27 @@ namespace WindowsFormsApp1
         }
         public void LoadData()
         {
-            xpCollection = new XPCollection(typeof(Customer));
+            uow = new UnitOfWork();
+            xpCollection = new XPCollection<Customer>(uow);
             gridControl1.DataSource = xpCollection;
         }
-
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            uow?.Dispose();
+            base.OnFormClosing(e);
+        }
+        private void SetPermisions()
+        {
+            if(CurrentUser.Username == "Admin")
+            {
+                AdminLabel.Visible = true;
+                RefreshChartButton.Visible = true;
+                // Admin settings
+                //
+                //
+                //
+            }
+        }
 
         protected override void OnResize(EventArgs e)
         {
@@ -121,56 +141,54 @@ namespace WindowsFormsApp1
 
             if (promptWindow == DialogResult.Yes)
             {
-                using (var uow = new UnitOfWork())
-                {
-                    var selected = gridView1.GetSelectedRows().Select(
-                        xpCollection => gridView1.GetRow(xpCollection) as Customer).ToList();
+
+                var selected = gridView1.GetSelectedRows().Select(
+                    xpCollection => gridView1.GetRow(xpCollection) as Customer).ToList();
 
 
-                    var customersToDelete = uow.Query<Customer>().AsEnumerable().Where(
-                        customer => selected.Any(x => customer.Code == x.Code)).ToList();
-                    uow.Delete(customersToDelete);
-                    uow.CommitChanges();
-                    xpCollection.Reload();
+                var customersToDelete = uow.Query<Customer>().AsEnumerable().Where(
+                    customer => selected.Any(x => customer.Code == x.Code)).ToList();
+                uow.Delete(customersToDelete);
+                uow.CommitChanges();
+                xpCollection.Reload();
 
-                }
             }
+            RefreshCountryChart();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            using (var uow = new UnitOfWork())
+
+            var customer = new Customer(uow);
+
+            int codeTemp = int.Parse(CodeField.EditValue.ToString());
+            customer.Code = codeTemp;
+            customer.CompanyName = CompanyNameField.Text;
+            customer.ContactNumber = ContactNumberField.Text;
+            customer.Country = CountryField.Text;
+            customer.Address = AddressField.Text;
+            if (LastOrderDateField.EditValue != null)
             {
-                var customer = new Customer(uow);
-
-                int codeTemp = int.Parse(CodeField.EditValue.ToString());
-                customer.Code = codeTemp;
-                customer.CompanyName = CompanyNameField.Text;
-                customer.ContactNumber = ContactNumberField.Text;
-                customer.Country = CountryField.Text;
-                customer.Address = AddressField.Text;
-                if (LastOrderDateField.EditValue != null)
-                {
-                    customer.LastOrderDate = DateTime.Parse(LastOrderDateField.EditValue.ToString());
-                }
-                else
-                {
-                    customer.LastOrderDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
-                }
-                    var exists = uow.Query<Customer>().Any(x => x.Code == codeTemp);
-
-                if (exists)
-                {
-                    XtraMessageBox.Show($"There is already a customer with id: {customer.Code}", "Input error");
-                    CodeField.Focus();
-                    return;
-                }
-
-                uow.CommitChanges();
-                xpCollection.Reload();
-                XtraMessageBox.Show("Saved!", "Succes");
-                RefreshCountryChart();
+                customer.LastOrderDate = DateTime.Parse(LastOrderDateField.EditValue.ToString());
             }
+            else
+            {
+                customer.LastOrderDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            }
+                var exists = uow.Query<Customer>().Any(x => x.Code == codeTemp);
+
+            if (exists)
+            {
+                XtraMessageBox.Show($"There is already a customer with id: {customer.Code}", "Input error");
+                CodeField.Focus();
+                return;
+            }
+
+            uow.CommitChanges();
+            xpCollection.Reload();
+            XtraMessageBox.Show("Saved!", "Succes");
+            RefreshCountryChart();
+        
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -183,34 +201,30 @@ namespace WindowsFormsApp1
 
             if(promptWindow == DialogResult.Yes)
             {
-                using (var uow = new UnitOfWork())
+                var customer = uow.Query<Customer>().Where(x => x.Code == chosenCustomerCode).FirstOrDefault();
+                if(customer == null)
                 {
-                    var customer = uow.Query<Customer>().Where(x => x.Code == chosenCustomerCode).FirstOrDefault();
-                    if(customer == null)
-                    {
-                        XtraMessageBox.Show("Customer not found! (check code)", "Error");
-                        return;
-                    }
-                    customer.CompanyName = CompanyNameField.Text;
-                    customer.ContactNumber = ContactNumberField.Text;
-                    customer.Country = CountryField.Text;
-                    customer.Address = AddressField.Text;
-                    if (LastOrderDateField.EditValue != null)
-                    {
-                        customer.LastOrderDate = DateTime.Parse(LastOrderDateField.EditValue.ToString());
-                    }
-                    else
-                    {
-                        customer.LastOrderDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
-                    }
-
-
-                    uow.CommitChanges();
-                    xpCollection.Reload();
-                    XtraMessageBox.Show("Updated!", "Succes");
-                    RefreshCountryChart();
+                    XtraMessageBox.Show("Customer not found! (check code)", "Error");
+                    return;
+                }
+                customer.CompanyName = CompanyNameField.Text;
+                customer.ContactNumber = ContactNumberField.Text;
+                customer.Country = CountryField.Text;
+                customer.Address = AddressField.Text;
+                if (LastOrderDateField.EditValue != null)
+                {
+                    customer.LastOrderDate = DateTime.Parse(LastOrderDateField.EditValue.ToString());
+                }
+                else
+                {
+                    customer.LastOrderDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
                 }
 
+
+                uow.CommitChanges();
+                xpCollection.Reload();
+                XtraMessageBox.Show("Updated!", "Succes");
+                RefreshCountryChart();
             }
 
         }
@@ -227,7 +241,7 @@ namespace WindowsFormsApp1
             ContactNumberField.Text = "";
             CountryField.Text = "";
             AddressField.Text = "";
-            LastOrderDateField.EditValue = "";
+            LastOrderDateField.EditValue = DateTime.Today;
             CodeField.Focus();
         }
 
@@ -238,28 +252,25 @@ namespace WindowsFormsApp1
 
         private void RefreshCountryChart()
         {
-            using (var uow = new UnitOfWork())
-            {
-                var allCustomers = uow.Query<Customer>().ToList();
+            var allCustomers = uow.Query<Customer>().ToList();
 
-                var countryCounts = allCustomers
-                    .GroupBy(c => c.Country)
-                    .Select(g => new { Country = g.Key, Count = g.Count() })
-                    .ToList();
+            var countryCounts = allCustomers
+                .GroupBy(c => c.Country)
+                .Select(g => new { Country = g.Key, Count = g.Count() })
+                .ToList();
 
-                CountryChart.Series.Clear();
+            CountryChart.Series.Clear();
 
-                Series series = new Series("Companies by Country", ViewType.NestedDoughnut);
+            Series series = new Series("Companies by Country", ViewType.NestedDoughnut);
 
-                foreach (var item in countryCounts)
-                    series.Points.Add(new SeriesPoint(item.Country, item.Count));
+            foreach (var item in countryCounts)
+                series.Points.Add(new SeriesPoint(item.Country, item.Count));
 
-                ((PieSeriesLabel)series.Label).TextPattern = "{A}";
-                ((PieSeriesLabel)series.Label).TextColor = Color.Black;
-               series.LegendTextPattern = "{VP:p0}";
+            ((PieSeriesLabel)series.Label).TextPattern = "{A}";
+            ((PieSeriesLabel)series.Label).TextColor = Color.Black;
+            series.LegendTextPattern = "{VP:p0}";
 
-                CountryChart.Series.Add(series);
-            }
+            CountryChart.Series.Add(series);
         }
 
         private void RefreshChartButton_Click(object sender, EventArgs e)
